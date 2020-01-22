@@ -1,0 +1,11 @@
+{
+  "name": "exercisetracker",
+  "version": "1.0.0",
+  "description": "fcc project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MK",
+  "license": "ISC"
+}
