@@ -71,6 +71,29 @@ app.post("/api/exercise/add", (req, res) => {
         }
     });
 });
+app.get("/api/exercise/log", (req, res) => {
+    
+    User.findOne({_id: req.query.userId}, (err, data) => {
+        if (err) return console.log(err);
+        if (!data) res.send("No data for specified query");
+        const query = {
+            from: req.query.hasOwnProperty("from") ? req.query.from : null,
+            to: req.query.hasOwnProperty("to") ? req.query.to : null,
+            limit: req.query.hasOwnProperty("limit") ? req.query.limit : null
+        };
+        const result = [];
+        console.log(data);
+        for (let doc of data.exercises) {
+            if (query.limit) {
+                if (result.length > query.limit) break;
+            }
+            if ((doc.date > query.from || !query.from) && (doc.date < query.to || !query.to)) {
+                result.push(doc);
+            }
+        }
+        res.json(result);
+    });
+});
 //rkXfibw-U    =>     user id to use on fcc sample page
 //start server
 const port = process.env.PORT | 3000;
