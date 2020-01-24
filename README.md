@@ -2,7 +2,7 @@
 
 #### Uses following dependencies
 
-1. espress
+1. express
 2. mongodb and mongoose
 3. dotenv
 4. cors
